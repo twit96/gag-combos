@@ -1,7 +1,7 @@
-import { trackColors, gagsData } from "./gag.data";
+import { trackColors, organicBonus, gagsData } from "./gag.data";
 import Gag from "./gag.module";
 
 export {
-  trackColors, gagsData, 
+  trackColors, organicBonus, gagsData, 
   Gag 
 };

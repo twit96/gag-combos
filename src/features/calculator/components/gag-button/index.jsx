@@ -13,12 +13,12 @@ export default function GagButton({ gag, clickHandler=null, hasX=false }) {
       onMouseEnter={() => dispatch(setHoveredGag({ 
         track: gag.track, 
         level: gag.level, 
-        org: (gag.organic==="Organic") 
+        org: (gag.organic) 
       }))}
       onMouseLeave={() => dispatch(setHoveredGag(null))}
       onClick={clickHandler}
     >
-      {(gag.organic==="Organic") ? (
+      {(gag.organic) ? (
         <img 
           className={styles.organicIcon}
           src="/img/gags/icon-organic-mini.png"

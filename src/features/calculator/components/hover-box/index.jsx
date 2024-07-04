@@ -34,7 +34,7 @@ export default function HoverBox() {
     }
   }
 
-  const isOrganic = gag && gag.organic==="Organic";
+  const isOrganic = gag && gag.organic;
 
   return (
     <div className={`${styles.hoverBox} ${isOrganic ? styles.organic : ""}`}>

@@ -23,7 +23,7 @@ export default function GagModal() {
           {/* Gag Heading */}
           <section className={styles.mainDetails}>
             <div 
-              className={`${styles.imgWrap} ${gag.organic==="Organic" ? styles.org : ""}`}
+              className={`${styles.imgWrap} ${gag.organic ? styles.org : ""}`}
               style={{background: (trackColors[gag.track] || "")}}
             >
               <img 
@@ -31,7 +31,7 @@ export default function GagModal() {
                 src={gag.image} 
                 alt={gag.name + " gag"} 
               />
-              {(gag.organic === "Organic") ? (
+              {(gag.organic) ? (
                 <img 
                   className={styles.organicIcon}
                   src="/img/gags/icon-organic-mini.png"
@@ -43,7 +43,7 @@ export default function GagModal() {
               <h3>
                 {gag.name}
                 {
-                  (gag.organic === "Organic") ? (
+                  (gag.organic) ? (
                     <>
                       <br />
                       <span>(Organic)</span>

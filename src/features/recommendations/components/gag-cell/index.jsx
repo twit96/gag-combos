@@ -52,15 +52,15 @@ export default function GagCell({ gag, expanded=false }) {
 
   return (
     <button 
-      title={`View details about "${gag.organic==="Organic" ? gag.organic+" " : ""}${gag.name}"`}
-      className={`btn ${styles.gagCell} ${expanded ? styles.expanded : ""} ${gag.organic==="Organic" ? styles.org : ""}`}
+      title={`View details about "${gag.organic ? "Organic " : ""}${gag.name}"`}
+      className={`btn ${styles.gagCell} ${expanded ? styles.expanded : ""} ${gag.organic ? styles.org : ""}`}
       style={{background: (trackColors[gag.track] || "")}}
       onClick={() => {
         dispatch(setGagModal(
           { 
             track: gag.track, 
             level: gag.level, 
-            org: (gag.organic==="Organic"),
+            org: gag.organic,
             comboStats: {
               accuracy: gag.accuracy,
               damage: gag.damage
@@ -69,7 +69,7 @@ export default function GagCell({ gag, expanded=false }) {
         ));
       }}
     >
-      {(gag.organic==="Organic") ? <OrganicIcon /> : null}
+      {(gag.organic) ? <OrganicIcon /> : null}
       <div className={`custom-scrollbar ${styles.gagCellContent}`}>
         <GagImageAndName gag={gag} />
         <GagStats gag={gag} />

@@ -1,4 +1,4 @@
-import { gagsData } from "~/features/core";
+import { organicBonus, gagsData } from "~/features/core";
 
 
 export default class Gag {
@@ -7,9 +7,9 @@ export default class Gag {
    * @param {int} level Gag level
    * @param {boolean} org Gag is organic (true/false)
   */
-  constructor(track="", level=0, org=null) {
+  constructor(track="", level=0, org=false) {
     // Defaults to "Pass"
-    this.organic = (org) ? "Organic" : "Non-Organic";
+    this.organic = org;
     this.track = track;
     this.level = level;
     this.name = "Pass"; 
@@ -38,11 +38,10 @@ export default class Gag {
 
     // get gag object from JSON
     let thisGag = gagsData[this.track][this.level-1];
-    let organicTxt = this.organic.toLowerCase(); 
-    
+
     // Accuracy - Lure special
     if (this.track === "Lure") {
-      this.accuracy["Base"] = thisGag.accuracy[organicTxt];
+      this.accuracy["Base"] = this.organic ? organicBonus[this.track](thisGag.accuracy) : thisGag.accuracy;
     } else {
       this.accuracy["Base"] = thisGag.accuracy;
     }
@@ -56,12 +55,12 @@ export default class Gag {
       (this.track === "Squirt") ||
       (this.track === "Drop")
     ) {
-      this.damage["Base"] = thisGag.damage[organicTxt][1];
+      this.damage["Base"] = this.organic ? organicBonus[this.track](thisGag.damage[1]) : thisGag.damage[1];
     } 
 
     // Heal - Toon-Up special
     if (this.track === "Toon-Up") {
-      this.heal = thisGag.heal[organicTxt][1];
+      this.heal = this.organic ? organicBonus[this.track](thisGag.heal[1]) : thisGag.heal[1];
 
     }
 
