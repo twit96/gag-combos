@@ -10,7 +10,7 @@ export default function HoverBox() {
   const gag = hoveredGag ? new Gag(
     hoveredGag.track,
     hoveredGag.level,
-    hoveredGag.org
+    hoveredGag.organic
   ) : null;
 
   let statTitle;

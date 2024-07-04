@@ -36,7 +36,7 @@ export default function CogsList() {
   const isV2 = useSelector((state) => state.calculator.cog.isV2);
 
   let gagObjs = gagsList.map((gag, i) => {
-    return new Gag(gag.track, gag.level, gag.org);
+    return new Gag(gag.track, gag.level, gag.organic);
   });
 
   let levels = Array.from(Array(20), (e,i)=>i+1);

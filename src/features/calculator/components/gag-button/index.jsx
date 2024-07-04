@@ -13,7 +13,7 @@ export default function GagButton({ gag, clickHandler=null, hasX=false }) {
       onMouseEnter={() => dispatch(setHoveredGag({ 
         track: gag.track, 
         level: gag.level, 
-        org: (gag.organic) 
+        organic: gag.organic
       }))}
       onMouseLeave={() => dispatch(setHoveredGag(null))}
       onClick={clickHandler}

@@ -5,11 +5,11 @@ export default class Gag {
   /** 
    * @param {string} track Gag track
    * @param {int} level Gag level
-   * @param {boolean} org Gag is organic (true/false)
+   * @param {boolean} organic Gag is organic (true/false)
   */
-  constructor(track="", level=0, org=false) {
+  constructor(track="", level=0, organic=false) {
     // Defaults to "Pass"
-    this.organic = org;
+    this.organic = organic;
     this.track = track;
     this.level = level;
     this.name = "Pass"; 

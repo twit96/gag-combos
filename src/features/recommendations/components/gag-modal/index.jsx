@@ -12,7 +12,7 @@ export default function GagModal() {
   let gag = new Gag(
     gagData.track,
     gagData.level,
-    gagData.org
+    gagData.organic
   );
 
   return (

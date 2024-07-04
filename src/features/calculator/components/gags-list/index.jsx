@@ -12,7 +12,7 @@ function GagsListContainer({ gagsList }) {
     <>
       {
         gagsList.map((gag, i) => {
-          let thisGag = new Gag(gag.track, gag.level, gag.org);
+          let thisGag = new Gag(gag.track, gag.level, gag.organic);
           return (
             <React.Fragment key={i}>
               <GagButton 

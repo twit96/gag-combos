@@ -34,7 +34,7 @@ function GagTrackButtons({ track, org }) {
               clickHandler={() => dispatch(addGag({
                 track: thisGag.track, 
                 level: thisGag.level, 
-                org: thisGag.organic
+                organic: thisGag.organic
               }))}
             />
           )

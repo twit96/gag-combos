@@ -4,7 +4,7 @@ import { recommendationsReducer } from "~/features/recommendations";
 
 
 // Handle any Major Redux Store Changes During Development
-const lastRefactoredStore = "202406011024";
+const lastRefactoredStore = "202407040838";
 const localRefactorDate = localStorage.getItem("lrs");
 // if local refactored date doesn't match last refactored date, clear local storage
 if (lastRefactoredStore !== localRefactorDate) {

@@ -60,7 +60,7 @@ export default function GagCell({ gag, expanded=false }) {
           { 
             track: gag.track, 
             level: gag.level, 
-            org: gag.organic,
+            organic: gag.organic,
             comboStats: {
               accuracy: gag.accuracy,
               damage: gag.damage
