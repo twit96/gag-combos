@@ -37,13 +37,13 @@ export default class Gag {
     if (!this.track || !this.level) return;
 
     // get gag object from JSON
-    let thisGag = gagsData[this.track][this.level-1];
+    let thisGagData = gagsData[this.track][this.level-1];
 
     // Accuracy - Lure special
     if (this.track === "Lure") {
-      this.accuracy["Base"] = this.organic ? organicBonus[this.track](thisGag.accuracy) : thisGag.accuracy;
+      this.accuracy["Base"] = this.organic ? organicBonus[this.track](thisGagData.accuracy) : thisGagData.accuracy;
     } else {
-      this.accuracy["Base"] = thisGag.accuracy;
+      this.accuracy["Base"] = thisGagData.accuracy;
     }
 
 
@@ -55,23 +55,23 @@ export default class Gag {
       (this.track === "Squirt") ||
       (this.track === "Drop")
     ) {
-      this.damage["Base"] = this.organic ? organicBonus[this.track](thisGag.damage[1]) : thisGag.damage[1];
+      this.damage["Base"] = this.organic ? organicBonus[this.track](thisGagData.damage[1]) : thisGagData.damage[1];
     } 
 
     // Heal - Toon-Up special
     if (this.track === "Toon-Up") {
-      this.heal = this.organic ? organicBonus[this.track](thisGag.heal[1]) : thisGag.heal[1];
+      this.heal = this.organic ? organicBonus[this.track](thisGagData.heal[1]) : thisGagData.heal[1];
 
     }
 
     // Name
-    this.name = thisGag.name;
+    this.name = thisGagData.name;
 
     // Stun - Lure Special
-    if (this.track === "Lure") this.stun = thisGag.stun; 
+    if (this.track === "Lure") this.stun = thisGagData.stun; 
 
     // Targets Multi
-    this.targetsMulti = thisGag.targets_multi;
+    this.targetsMulti = thisGagData.targets_multi;
   }
 
   _getImageName() {
