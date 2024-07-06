@@ -21,8 +21,7 @@ import GetTrackCombinations from "./get-track-combinations.module";
     this.comboSort = comboSort;
     this.gagFilters = gagFilters;
 
-    const trackCombinations = new GetTrackCombinations(this.numToons, this.comboType, this.gagFilters, this.cog.statusEffects);
-    this.gagComboTracks = trackCombinations.combinations;
+    this.gagComboTracks = new GetTrackCombinations(this.numToons, this.comboType, this.gagFilters, this.cog.statusEffects).combinations;
     this.recCombos = this._recCombos();
     this.errorMsg = this._checkForError();
   }
