@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import styles from "./combo-permutations.module.css";
+import styles from "./track-combinations.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
 import {
   PermutationsInput, PermutationsOutput,
   GetTrackCombinations
-} from "~/features/testing/combo-permutations";
+} from "~/features/testing/track-combinations";
 import { Footer } from "~/features/ui";
 
 
-export default function TestComboPermutations() {
+export default function TestTrackCombinations() {
   const [num, setNum] = useState(0);  // numToons
   const [type, setType] = useState("All");  // comboType
   const [filters, setFilters] = useState({

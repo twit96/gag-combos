@@ -6,7 +6,7 @@ import Calculator from "~/pages/calculator";
 import Changelog from "~/pages/changelog";
 import PrivacyPolicy from "~/pages/privacy";
 import FAQ from "~/pages/faq";
-import TestComboPermutations from "~/pages/testing/combo-permutations";
+import TestTrackCombinations from "~/pages/testing/track-combinations";
 import PageNotFound from "~/pages/page-not-found";
 
 
@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<FAQ />} />
         {/* Hidden Testing */}
-        <Route path="/testing/combo-permutations" element={<TestComboPermutations />} />
+        <Route path="/testing/track-combinations" element={<TestTrackCombinations />} />
         {/* 404 */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
