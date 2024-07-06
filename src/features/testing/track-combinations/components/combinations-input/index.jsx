@@ -19,7 +19,7 @@ export default function CombinationsInput({
           <input
             name="numToons" type="number" min="0" max="4"
             value={num}
-            onChange={(e) => setNum(e.target.value)}
+            onChange={(e) => setNum( Math.max(0, Math.min(4, e.target.value)) )}
           />
         </div>
 
