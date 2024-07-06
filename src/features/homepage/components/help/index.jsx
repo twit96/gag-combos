@@ -21,7 +21,7 @@ export default function Help() {
                 <div className={styles.right}>
                   <h2>New to Toontown?</h2>
                   <a className="btn" href="https://toontownrewritten.com/" target="_blank" rel="noopener noreferrer">Toontown Rewritten Homepage</a>
-                  <a className="btn" href="https://toontownrewritten.fandom.com/wiki/Gags" target="_blank" rel="noopener noreferrer">TTR Gags Wiki</a>
+                  <a className="btn" href="https://toontownrewritten.wiki/Gags" target="_blank" rel="noopener noreferrer">TTR Gags Wiki</a>
                 </div>
               </>
             }
