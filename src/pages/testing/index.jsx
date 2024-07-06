@@ -15,7 +15,10 @@ export default function Testing() {
               <h2>Testing</h2>
               <ul>
                 <li>
-                  <a href="./track-combinations">Track Combinations Algorithm</a>
+                  <a href="./track-combinations">Test Track Combinations Algorithm</a>
+                </li>
+                <li>
+                  <a href="./gag-stats">Check Gag Stats</a>
                 </li>
               </ul>
             </div>

@@ -1,0 +1,41 @@
+.grid {
+  overflow: auto;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 1ch;
+  border-radius: 1ch;
+  padding: 1ch;
+  width: fit-content;
+}
+.track h3 {
+  min-width: 8ch;
+  display: grid;
+  place-items: center;
+}
+
+.gagCellWrap {
+  font-size: 0.75rem;
+  padding: 0.5ch;
+}
+.gagCellWrap h4 {
+  line-height: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.gagCell {
+  padding: 0.25ch;
+  width: 28ch;
+}
+.gagCellNonOrganic { background: #ffffff66; }
+.gagCellOrganic {
+  background: var(--green-500);
+  color: var(--grey-200);
+  padding: 0.5ch;
+}
+.gagCell div {
+  display: flex;
+  gap: 1ch;
+}
