@@ -25,7 +25,7 @@ function CogStats({ active, cog }) {
         <b>{cog.cog}</b>
         <b>{cog.suit}</b>
         <span className={styles.cogLevel}>
-          Level {cog.level}{cog.statusEffects.reinforcedPlating && " v2.0"}
+          Level {cog.level}{cog.statusEffects["Reinforced Plating"] && " v2.0"}
           <br />
           ({cog.hp} HP)
         </span>

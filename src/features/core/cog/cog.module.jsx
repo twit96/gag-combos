@@ -21,13 +21,13 @@ export default class Cog {
     this.tgtDef = this._getTargetDefense();
 
     this.statusEffects = { 
-      trapped: isTrapped,
-      lured: isLured, 
+      "Trapped": isTrapped,
+      "Lured": isLured, 
       // remoteControlledDamage,   // IGNORE - Remotes not relevant to Gag Combos Info
       // remoteControlledHealing,  // IGNORE - Remotes not relevant to Gag Combos Info
       // accuracyDown,             // IGNORE - Cog accuracy not relevant to Gag Combos Info
       // accuracyUp,               // IGNORE - Toon accuracy not relevant to Cog module
-      reinforcedPlating: isV2, 
+      "Reinforced Plating": isV2, 
       // defenseUp,                // TODO - varies based on field office tier
     };
 
@@ -80,7 +80,7 @@ export default class Cog {
   }
 
   _setRemainingHP() { return this.hp; }
-  _setNumLives()    { return this.statusEffects.reinforcedPlating ? 2 : 1; }
+  _setNumLives()    { return this.statusEffects["Reinforced Plating"] ? 2 : 1; }
   resetLivesAndHP() {
     this.hpRemaining = this._setRemainingHP();
     this.livesRemaining = this._setNumLives();

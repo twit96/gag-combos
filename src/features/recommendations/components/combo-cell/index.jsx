@@ -62,7 +62,7 @@ function ComboStats({ combo }) {
         title="Combo Damage"
       >
         <span>Damage:</span>
-        <span>{combo.damage["Total"]} / {combo.cog.statusEffects.reinforcedPlating ? (combo.cog.hp * 2) : combo.cog.hp}</span>
+        <span>{combo.damage["Total"]} / {combo.cog.statusEffects["Reinforced Plating"] ? (combo.cog.hp * 2) : combo.cog.hp}</span>
       </h4>
       <h4 
         title="Combo Accuracy: Read more about this statistic on the FAQ page."

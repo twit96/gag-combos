@@ -73,7 +73,7 @@ export default class Combo {
       .join("-")
       .toLowerCase();
 
-    if (this.cog.statusEffects.lured) thisInfoKey = "lure-"+thisInfoKey;
+    if (this.cog.statusEffects["Lured"]) thisInfoKey = "lure-"+thisInfoKey;
     if (!comboData["mapsToData"][thisInfoKey]) return false;
 
     // use the key to get the map to any descriptions/warnings
@@ -106,7 +106,7 @@ export default class Combo {
         gag.damage["Attack"] = gag.damage["Base"];  // ignoring toon XP
         [
           gagDudMultiplier, gagLureMultiplier, gagComboMultiplier
-        ] = gag.getDamageWithMultiplier(this.counts, this.cog.statusEffects.lured);
+        ] = gag.getDamageWithMultiplier(this.counts, this.cog.statusEffects["Lured"]);
         // update current damage totals
         currBaseDamage += gag.damage["Attack"] * gagDudMultiplier;
         currLuredDamage += gag.damage["Attack"] * gagLureMultiplier;

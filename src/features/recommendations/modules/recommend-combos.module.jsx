@@ -1,5 +1,5 @@
 import FindCombo from "./find-combo.module";
-import { combosData } from "~/features/recommendations";
+import GetTrackCombinations from "./get-track-combinations.module";
 
 
 /**
@@ -21,26 +21,10 @@ import { combosData } from "~/features/recommendations";
     this.comboSort = comboSort;
     this.gagFilters = gagFilters;
 
-    this.gagComboTracks = this._getGagComboTracks();
+    const trackCombinations = new GetTrackCombinations(this.numToons, this.comboType, this.gagFilters, this.cog.statusEffects);
+    this.gagComboTracks = trackCombinations.combinations;
     this.recCombos = this._recCombos();
     this.errorMsg = this._checkForError();
-  }
-
-  _getGagComboTracks() {
-    if (this.numToons === 0) return [];
-
-    // Init
-    let gagComboTracks = [];
-    if (this.comboType === "Basic") {
-      gagComboTracks = gagComboTracks.concat(combosData[String(this.numToons)]["basic"]);
-    } else {
-      if (!this.cog || !this.cog.statusEffects.lured) {
-        gagComboTracks = gagComboTracks.concat(combosData[String(this.numToons)]["notLured"]);
-      }
-      gagComboTracks = gagComboTracks.concat(combosData[String(this.numToons)]["default"]);
-    }
-    
-    return gagComboTracks;
   }
 
   _recCombos()  {
@@ -235,7 +219,7 @@ import { combosData } from "~/features/recommendations";
         })
       ) {
         return "You may need more gag tracks to defeat this cog!"
-      } else if (this.comboType==="Basic" && this.cog.statusEffects.reinforcedPlating) {
+      } else if (this.comboType==="Basic" && this.cog.statusEffects["Reinforced Plating"]) {
         return "Defeating a v2.0 Cog requires combos with at least two distinct gag tracks! Try another filter instead."
       } else {
         return "You need more toons to defeat this cog!";

@@ -2,30 +2,34 @@ import React, { useState } from "react";
 import styles from "./track-combinations.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
-import {
-  CombinationsInput, CombinationsOutput,
-  GetTrackCombinations
-} from "~/features/testing/track-combinations";
+import { GetTrackCombinations } from "~/features/recommendations";
+import { CombinationsInput, CombinationsOutput } from "~/features/testing/track-combinations";
 import { Footer } from "~/features/ui";
 
 
 export default function TestTrackCombinations() {
   const [num, setNum] = useState(0);  // numToons
   const [type, setType] = useState("All");  // comboType
-  const [filters, setFilters] = useState({
-    "Toon-Up": true,
-    "Trap": true,
-    "Lure": true,
-    "Sound": true,
-    "Throw": true,
-    "Squirt": true,
-    "Drop": true,
-  });  // gagFilters
-  const [effects, setEffects] = useState({
-    "Trapped": false,
-    "Lured": false,
-    // ...
-  });  // statusEffects
+  const [filters, setFilters] = useState(
+    // gagFilters
+    {
+      "Toon-Up": true,
+      "Trap": true,
+      "Lure": true,
+      "Sound": true,
+      "Throw": true,
+      "Squirt": true,
+      "Drop": true,
+    }
+  );  
+  const [effects, setEffects] = useState(
+    // statusEffects
+    {
+      "Trapped": false,
+      "Lured": false,
+      // ...
+    }
+  );
 
   const combinations = new GetTrackCombinations(num, type, filters, effects).combinations;
 

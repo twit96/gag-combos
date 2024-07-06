@@ -5,9 +5,7 @@ import recommendationsReducer, {
   resetToons, toggleToonActive, updateToonOrganic
 } from "./recommendations.slice";
 
-import combosData from "./data/combos.data.json";
-
-import { FindCombo, RecommendCombos } from "./modules";
+import { FindCombo, GetTrackCombinations, RecommendCombos } from "./modules";
 
 import {
   RecommendationsDashboard,
@@ -22,8 +20,7 @@ export {
   resetCombos, setComboType, setComboSort, toggleGagTrack, toggleCombosExpanded,
   resetGagModal, setGagModal,
   resetToons, toggleToonActive, updateToonOrganic,
-  combosData,
-  FindCombo, RecommendCombos,
+  FindCombo, GetTrackCombinations, RecommendCombos,
   RecommendationsDashboard,
   ToonsCard,
   CogCard, ToggleStatusEffects,
