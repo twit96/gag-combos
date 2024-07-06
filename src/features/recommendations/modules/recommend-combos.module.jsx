@@ -20,8 +20,9 @@ import GetTrackCombinations from "./get-track-combinations.module";
     this.comboType = comboType;
     this.comboSort = comboSort;
     this.gagFilters = gagFilters;
+    this.statusEffects = this.cog ? this.cog.statusEffects : {};
 
-    this.gagComboTracks = new GetTrackCombinations(this.numToons, this.comboType, this.gagFilters, this.cog.statusEffects).combinations;
+    this.gagComboTracks = new GetTrackCombinations(this.numToons, this.comboType, this.gagFilters, this.statusEffects).combinations;
     this.recCombos = this._recCombos();
     this.errorMsg = this._checkForError();
   }
@@ -218,7 +219,7 @@ import GetTrackCombinations from "./get-track-combinations.module";
         })
       ) {
         return "You may need more gag tracks to defeat this cog!"
-      } else if (this.comboType==="Basic" && this.cog.statusEffects["Reinforced Plating"]) {
+      } else if (this.comboType==="Basic" && this.statusEffects["Reinforced Plating"]) {
         return "Defeating a v2.0 Cog requires combos with at least two distinct gag tracks! Try another filter instead."
       } else {
         return "You need more toons to defeat this cog!";
