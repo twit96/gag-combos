@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./track-combinations.module.css";
+import styles from "./index.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
 import { GetTrackCombinations } from "~/features/recommendations";
