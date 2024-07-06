@@ -14,7 +14,7 @@ export default class GetTrackCombinations {
     // this._consoleLogInputsForDev();
 
     this._allowedTracks = this._getAllowedTracks();
-    this.permutations = [];
+    this.combinations = [];
     this._getCombinations();
   }
 
@@ -139,7 +139,7 @@ export default class GetTrackCombinations {
 
     // If at combo length, push to output array.
     } else {
-      this.permutations.push(nextCombo);
+      this.combinations.push(nextCombo);
     }
   }
 
@@ -156,7 +156,7 @@ export default class GetTrackCombinations {
       for (let j=0; j<this._numToons; j++) {
         thisCombo.push(this._allowedTracks[i]);
       }
-      this.permutations.push(thisCombo);
+      this.combinations.push(thisCombo);
     }
   }
 
@@ -173,7 +173,7 @@ export default class GetTrackCombinations {
     this._comboType==="Basic" ? this._makeBasicCombos() : this._makeMixedCombos();
       
     // Reverse Output
-    this.permutations.reverse();
+    this.combinations.reverse();
 
   }
 

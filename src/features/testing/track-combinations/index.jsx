@@ -1,7 +1,7 @@
-import { PermutationsInput, PermutationsOutput } from "./components";
+import { CombinationsInput, CombinationsOutput } from "./components";
 import { GetTrackCombinations } from "./modules";
 
 export {
-  PermutationsInput, PermutationsOutput,
+  CombinationsInput, CombinationsOutput,
   GetTrackCombinations
 };

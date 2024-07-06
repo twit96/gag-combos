@@ -3,7 +3,7 @@ import styles from "./track-combinations.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
 import {
-  PermutationsInput, PermutationsOutput,
+  CombinationsInput, CombinationsOutput,
   GetTrackCombinations
 } from "~/features/testing/track-combinations";
 import { Footer } from "~/features/ui";
@@ -27,7 +27,7 @@ export default function TestTrackCombinations() {
     // ...
   });  // statusEffects
 
-  const permutations = new GetTrackCombinations(num, type, filters, effects).permutations;
+  const combinations = new GetTrackCombinations(num, type, filters, effects).combinations;
 
   return (
     <PageWrap
@@ -35,15 +35,15 @@ export default function TestTrackCombinations() {
         <>
           <Header />
           <main className={styles.main+" wrapper"}>
-            <h2 className="standard-heading">Programmatic Combo Permutations Testing</h2>
+            <h2 className="standard-heading">Programmatic Track Combinations Testing</h2>
             <div className={styles.twoCol}>
-              <PermutationsInput
+              <CombinationsInput
                 num={num} setNum={setNum}
                 type={type} setType={setType}
                 filters={filters} setFilters={setFilters}
                 effects={effects} setEffects={setEffects}
               />
-              <PermutationsOutput permutations={permutations} />
+              <CombinationsOutput combinations={combinations} />
             </div>
 
           </main>

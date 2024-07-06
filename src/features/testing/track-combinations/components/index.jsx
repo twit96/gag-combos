@@ -1,4 +1,4 @@
-import PermutationsInput from "./permutations-input";
-import PermutationsOutput from "./permutations-output";
+import CombinationsInput from "./combinations-input";
+import CombinationsOutput from "./combinations-output";
 
-export { PermutationsInput, PermutationsOutput };
+export { CombinationsInput, CombinationsOutput };
