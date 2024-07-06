@@ -1,0 +1,14 @@
+.output {
+  background: var(--grey-400);
+  padding: 1ch;
+  border-radius: 0.5ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1ch;
+}
+.code {
+  background: none;
+  display: block;
+  height: 40ch;
+  overflow: auto;
+}
