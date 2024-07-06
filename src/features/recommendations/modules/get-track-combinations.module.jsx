@@ -64,7 +64,12 @@ export default class GetTrackCombinations {
     // "Basic" comboType doesn't allow mixing and matching of gag tracks - therefore only allow attack tracks
     if (this._comboType === "Basic") allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
     // remove impossible 1-toon combos
-    if (this._numToons === 1) allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
+    if (this._numToons === 1) {
+      // trap and lure (always)
+      allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
+      // drop (if lured)
+      if (this._statusEffects["Lured"]) allowedTracks = allowedTracks.filter((t) => { return t !== "Drop" });
+    }
     // console.log(allowedTracks);
     return allowedTracks;
   }
