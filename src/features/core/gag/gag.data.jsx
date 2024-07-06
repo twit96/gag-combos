@@ -31,18 +31,36 @@ export const trackOrdering = {
 
 
 /*
+Fix floating-point errors in organic bonus calculations.
+Organic Bonus utilizes Math.ceil(), so the only edge case this function tries to fix
+is when a calculation returns a floating point number n of the form:
+
+  n.0000000000m (in base 10), where m>0.
+
+This scenario would cause the integer to be incorrectly rounded up.
+Thus, this function takes a short-sited approach of fixing this specific scenario 
+rather than implementing a robust global floating-point error mitigation strategy (for now).
+
+  e.g. 180 * 1.1 = 198, but the calculation returns 198.00000000000003,
+                        so Math.ceil() returns 199 instead of 198.
+*/
+function fixOrganicBonusFPE(n) {
+  return (parseFloat((n).toFixed(4)));
+}
+
+/*
 h := heal, d := damage, a := accuracy
 Usage:
   const organicValue = organicBonus[currentGagTrack](baseValue);
 */
 export const organicBonus = {
-  "Toon-Up": function(h) { return Math.ceil(h * 1.2)  },
-  "Trap":    function(d) { return Math.ceil(d * 1.1)  },
-  "Lure":    function(a) { return           a + 0.1   },
-  "Sound":   function(d) { return Math.ceil(d * 1.1)  },
-  "Throw":   function(d) { return Math.ceil(d * 1.1)  },
-  "Squirt":  function(d) { return Math.ceil(d * 1.15) },
-  "Drop":    function(d) { return Math.ceil(d * 1.15) },
+  "Toon-Up": function(h) { return Math.ceil( fixOrganicBonusFPE(h * 1.2)  )  },
+  "Trap":    function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  )  },
+  "Lure":    function(a) { return            fixOrganicBonusFPE(a + 0.1)   },
+  "Sound":   function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  ) },
+  "Throw":   function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  ) },
+  "Squirt":  function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.15) ) },
+  "Drop":    function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.15) ) },
 };
 
 
