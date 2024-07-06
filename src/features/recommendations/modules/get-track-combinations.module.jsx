@@ -27,7 +27,7 @@ export default class GetTrackCombinations {
     // this._consoleLogInputsForDev();
 
     this._allowedTracks = this._getAllowedTracks();
-    
+
     this.combinations = [];  // Output
     this._getCombinations();
   }
@@ -55,16 +55,16 @@ export default class GetTrackCombinations {
     // explicitly enabled/disabled tracks
     let allowedTracks = Object.keys(this._gagFilters).filter(track => this._gagFilters[track]);
     // remove Toon-Up - does not deal damage or add accuracy as of 4.0.0
-    allowedTracks = allowedTracks.filter((e) => { return e !== "Toon-Up"; })
-    // status effects can prevent using some gag tracks
-    if (this._statusEffects["Trapped"]) allowedTracks = allowedTracks.filter((et) => { return et !== "Trap" });
-    if (this._statusEffects["Lured"])   allowedTracks = allowedTracks.filter((et) => { return et !== "Trap" && et !== "Lure" });
-    // "Basic" comboType doesn't allow mixing and matching of gag tracks - therefore only allow attack tracks
-    if (this._comboType === "Basic") allowedTracks = allowedTracks.filter((et) => { return !["Trap", "Lure"].includes(et) });
-    // remove impossible 1-toon combos
-    if (this._numToons === 1) allowedTracks = allowedTracks.filter((et) => { return !["Trap", "Lure"].includes(et) });
+    allowedTracks = allowedTracks.filter((t) => { return t !== "Toon-Up"; })
     // remove Trap if Lure isn't enabled
-    if (!allowedTracks.includes("Lure")) allowedTracks = allowedTracks.filter((et) => { return et !== "Trap" });
+    if (!allowedTracks.includes("Lure")) allowedTracks = allowedTracks.filter((t) => { return t !== "Trap" });
+    // status effects can prevent using some gag tracks
+    if (this._statusEffects["Trapped"]) allowedTracks = allowedTracks.filter((t) => { return t !== "Trap" });
+    if (this._statusEffects["Lured"])   allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
+    // "Basic" comboType doesn't allow mixing and matching of gag tracks - therefore only allow attack tracks
+    if (this._comboType === "Basic") allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
+    // remove impossible 1-toon combos
+    if (this._numToons === 1) allowedTracks = allowedTracks.filter((t) => { return !["Trap", "Lure"].includes(t) });
     // console.log(allowedTracks);
     return allowedTracks;
   }
