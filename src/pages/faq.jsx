@@ -104,11 +104,11 @@ export default function FAQ() {
                       <ul>
                         <li>
                           <a
-                            href="https://toontownrewritten.fandom.com/wiki/Gags"
+                            href="https://toontownrewritten.wiki/Gags"
                             rel="noopener noreferrer"
                             target="_blank"
                           >
-                            toontownrewritten<wbr />.fandom.com/<wbr />wiki/<wbr />Gags
+                            toontownrewritten.wiki/<wbr />Gags
                           </a>
                         </li>
                       </ul>
