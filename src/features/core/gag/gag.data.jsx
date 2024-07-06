@@ -9,15 +9,15 @@ export const trackColors = {
 };
 
 
-// export const trackOrdering = {
-//   "Toon-Up": 1,
-//   "Trap":    2,
-//   "Lure":    3,
-//   "Sound":   4,
-//   "Throw":   5,
-//   "Squirt":  6,
-//   "Drop":    7,
-// };
+export const trackOrdering = {
+  "Toon-Up": 1,
+  "Trap":    2,
+  "Lure":    3,
+  "Sound":   4,
+  "Throw":   5,
+  "Squirt":  6,
+  "Drop":    7,
+};
 
 // export const trackAttributes = {
 //   "Toon-Up": "heal",

@@ -1,6 +1,8 @@
 import { gagsData } from "~/features/core";
-import { Gag } from "~/features/core";
-import { Combo } from "~/features/core";
+import {
+  Gag, trackOrdering,
+  Combo
+} from "~/features/core";
 
 
 // eslint-disable-next-line no-extend-native
@@ -31,19 +33,8 @@ export default class FindCombo {
   }
 
   _sortTracks(tracks) {
-    // Pre-defined Order
-    let ordering = {
-      "Toon-Up": 1,
-      "Trap":    2,
-      "Lure":    3,
-      "Sound":   4,
-      "Throw":   5,
-      "Squirt":  6,
-      "Drop":    7
-    }
-
     return tracks.sort(function(a,b) {
-      return (ordering[a] - ordering[b] || a.localeCompare(b));
+      return (trackOrdering[a] - trackOrdering[b] || a.localeCompare(b));
     });
   }
 
