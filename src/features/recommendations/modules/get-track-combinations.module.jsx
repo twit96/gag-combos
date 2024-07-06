@@ -1,3 +1,17 @@
+/**
+ * Given the number of toons, the user's desired type of gag combinations,
+ * the user's enabled gag tracks, and the user-set cog status effects,
+ * outputs all valid combinations of gag tracks.
+ * Used by the RecommendCombos class to find specific gags for each of these track combos.
+ * 
+ * @param numToons {Number} the number of toons in the given battle
+ * @param comboType {String} the user's desired type of gag combinations
+ * @param gagFilters {Object} the currently active gag tracks in the battle
+ * @param statusEffects {Object} the currently active status effects in the battle
+ * 
+ * Stores all valid gag track combinations for the given battle parameters
+ * in the "combinations" public variable.
+*/
 export default class GetTrackCombinations {
   
   constructor(
@@ -10,11 +24,11 @@ export default class GetTrackCombinations {
     this._comboType = comboType;
     this._gagFilters = gagFilters;
     this._statusEffects = statusEffects;
-
     // this._consoleLogInputsForDev();
 
     this._allowedTracks = this._getAllowedTracks();
-    this.combinations = [];
+    
+    this.combinations = [];  // Output
     this._getCombinations();
   }
 
@@ -74,6 +88,15 @@ export default class GetTrackCombinations {
         remainingTracks--;
       }
 
+      // Disallow Trap-without-Lure
+      if (
+        workingCombo.includes("Trap") &&                   // contains Trap
+        !workingCombo.includes("Lure") &&                  // doesn't contain Lure
+        this._allowedTracks[currentTrackIndex] !== "Lure"  // current track is not Lure
+      ) {
+        return;  // stop this recursive path
+      }
+
       // If not already trapped...
       if (!this._statusEffects["Trapped"]) {
 
@@ -102,14 +125,17 @@ export default class GetTrackCombinations {
 
       }
 
-      // Disallow Trap-without-Lure
+      // Disallow All-Drop-on-Lure
       if (
-        workingCombo.includes("Trap") &&                   // contains Trap
-        !workingCombo.includes("Lure") &&                  // doesn't contain Lure
-        this._allowedTracks[currentTrackIndex] !== "Lure"  // current track is not Lure
+        this._statusEffects["Lured"] &&  // cog is already lured
+        workingCombo[0]==="Drop"         // first toon is using Drop
       ) {
         return;  // stop this recursive path
       }
+
+      
+
+      
     }
     
     // ---------- ---------- Actual Recursive Algorithm ---------- ----------
@@ -154,9 +180,12 @@ export default class GetTrackCombinations {
     for (let i=this._allowedTracks.length-1; i>=0; i--) {
       let thisCombo = [];
       for (let j=0; j<this._numToons; j++) {
-        thisCombo.push(this._allowedTracks[i]);
+          thisCombo.push(this._allowedTracks[i]);
       }
-      this.combinations.push(thisCombo);
+      // disallow drop-only-on-lured
+      if ( !(this._statusEffects["Lured"] && this._allowedTracks[i] === "Drop") ) {
+        this.combinations.push(thisCombo);
+      }
     }
   }
 
