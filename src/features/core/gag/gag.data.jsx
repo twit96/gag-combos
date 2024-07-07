@@ -54,13 +54,13 @@ Usage:
   const organicValue = organicBonus[currentGagTrack](baseValue);
 */
 export const organicBonus = {
-  "Toon-Up": function(h) { return Math.ceil( fixOrganicBonusFPE(h * 1.2)  )  },
-  "Trap":    function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  )  },
-  "Lure":    function(a) { return            fixOrganicBonusFPE(a + 0.1)   },
-  "Sound":   function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  ) },
-  "Throw":   function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.1)  ) },
-  "Squirt":  function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.15) ) },
-  "Drop":    function(d) { return Math.ceil( fixOrganicBonusFPE(d * 1.15) ) },
+  "Toon-Up": function(h) { return Math.ceil(       fixOrganicBonusFPE(h * 1.2)  ) },
+  "Trap":    function(d) { return Math.ceil(       fixOrganicBonusFPE(d * 1.1)  ) },
+  "Lure":    function(a) { return Math.min ( 0.95, fixOrganicBonusFPE(a + 0.1)  ) },
+  "Sound":   function(d) { return Math.ceil(       fixOrganicBonusFPE(d * 1.1)  ) },
+  "Throw":   function(d) { return Math.ceil(       fixOrganicBonusFPE(d * 1.1)  ) },
+  "Squirt":  function(d) { return Math.ceil(       fixOrganicBonusFPE(d * 1.15) ) },
+  "Drop":    function(d) { return Math.ceil(       fixOrganicBonusFPE(d * 1.15) ) },
 };
 
 
