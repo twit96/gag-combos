@@ -2,42 +2,23 @@ import React from "react";
 import styles from "./index.module.css";
 import { Gag, trackColors, gagsData } from "~/features/core";
 
-function GagCell({ track, level, organic }) {
-
-  const gagInstance = new Gag(track, level, organic);
-
-  return (
-    <div className={`${styles.gagCell} ${gagInstance.organic ? styles.gagCellOrganic : styles.gagCellNonOrganic}`}>
-
-      {
-        ["Toon-Up", "Lure"].includes(track) &&
-        <div>
-          <b>Accuracy</b>
-          <span>Base: {gagInstance.accuracy["Base"]}</span>
-          <span>Attack: {gagInstance.accuracy["Attack"]}</span>
-        </div>
-      }
-      {
-        !["Toon-Up", "Lure"].includes(track) &&
-        <div>
-          <b>Damage</b>
-          <span>Base: {gagInstance.damage["Base"]}</span>
-          <span>Attack: {gagInstance.damage["Attack"]}</span>
-        </div>
-      }
-    </div>
-  );
-}
 
 function GagCellWrap({ track, level, data }) {
+
+  const gagNonOrg = new Gag(track, level, false);
+  const gagOrg    = new Gag(track, level, true);
+
+  const gagAttribute = (track==="Toon-Up") ? "heal" : (track==="Lure") ? "accuracy" : "damage";
+
+
   return (
-    <div className={styles.gagCellWrap}>
-      <h4>
-        <span>{data.name}</span>
-        <span>({level})</span>
-      </h4>
-      <GagCell track={track} level={level} organic={false} />
-      <GagCell track={track} level={level} organic={true} />
+    <div className={styles.gagCell}>
+      <h4>({level}) {data.name}</h4>
+      <div>
+        <span>{gagAttribute}:</span>
+        <span>{gagNonOrg[gagAttribute]["Base"] || gagNonOrg[gagAttribute]}</span>
+        <b className={styles.organicText}>{gagOrg[gagAttribute]["Base"] || gagOrg[gagAttribute]}</b>
+      </div>
     </div>
   )
 }
@@ -45,7 +26,7 @@ function GagCellWrap({ track, level, data }) {
 
 export default function CheckGagStatsGrid() {
   return (
-    <div className={styles.grid}>
+    <div className={styles.grid+" custom-scrollbar"}>
       {
         Object.keys(gagsData).map((track, i) => (
           <div className={styles.track} style={{backgroundColor: trackColors[track]}} key={i}>

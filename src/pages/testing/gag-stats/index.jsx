@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
@@ -12,7 +13,8 @@ export default function CheckGagStats() {
       content={
         <>
           <Header />
-          <main className={styles.main+" custom-scrollbar wrapper"}>
+          <main className={styles.main+" wrapper"}>
+            <Link to="/testing">Back</Link>
             <h2 className="standard-heading">Check Gag Stats</h2>
             <CheckGagStatsGrid  />
           </main>

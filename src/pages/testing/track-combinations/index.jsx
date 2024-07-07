@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
@@ -7,7 +8,7 @@ import { CombinationsInput, CombinationsOutput } from "~/features/testing/track-
 import { Footer } from "~/features/ui";
 
 
-export default function TestTrackCombinations() {
+export default function CheckTrackCombinations() {
   const [num, setNum] = useState(0);  // numToons
   const [type, setType] = useState("All");  // comboType
   const [filters, setFilters] = useState(
@@ -39,7 +40,8 @@ export default function TestTrackCombinations() {
         <>
           <Header />
           <main className={styles.main+" wrapper"}>
-            <h2 className="standard-heading">Programmatic Track Combinations Testing</h2>
+            <Link to="/testing">Back</Link>
+            <h2 className="standard-heading">Check Track Combinations Algorithm</h2>
             <div className={styles.twoCol}>
               <CombinationsInput
                 num={num} setNum={setNum}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PageWrap } from "~/features/ui";
 import { Header } from "~/features/ui";
 import { Footer } from "~/features/ui";
@@ -15,10 +16,10 @@ export default function Testing() {
               <h2>Testing</h2>
               <ul>
                 <li>
-                  <a href="./track-combinations">Test Track Combinations Algorithm</a>
+                  <Link to="/testing/track-combinations">Check Track Combinations Algorithm</Link>
                 </li>
                 <li>
-                  <a href="./gag-stats">Check Gag Stats</a>
+                  <Link to="/testing/gag-stats">Check Gag Stats</Link>
                 </li>
               </ul>
             </div>

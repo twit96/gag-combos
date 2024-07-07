@@ -1,41 +1,39 @@
 .grid {
   overflow: auto;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
   width: 100%;
 }
 
 .track {
+  border-radius: 1.5rem;
+  box-shadow: 0 0.25rem 0.25rem var(--grey-700);
   display: flex;
-  gap: 1ch;
-  border-radius: 1ch;
-  padding: 1ch;
+  gap: 0.5rem;
+  padding: 0.5rem;
   width: fit-content;
 }
 .track h3 {
-  min-width: 8ch;
   display: grid;
+  min-width: 8ch;
   place-items: center;
 }
 
-.gagCellWrap {
-  font-size: 0.75rem;
-  padding: 0.5ch;
+.track > * {
+  background: #ffffff44;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
-.gagCellWrap h4 {
-  line-height: 1;
-  display: flex;
-  justify-content: space-between;
-}
+
 .gagCell {
-  padding: 0.25ch;
-  width: 28ch;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  justify-content: center;
+  width: 21ch;
 }
-.gagCellNonOrganic { background: #ffffff66; }
-.gagCellOrganic {
-  background: var(--green-500);
-  color: var(--grey-200);
-  padding: 0.5ch;
-}
+.gagCell h4 { line-height: 1; }
 .gagCell div {
   display: flex;
   gap: 1ch;
 }
+.organicText { color: var(--green-500); }
