@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 import { Cog } from "~/features/core";
 import { RecommendCombos } from "~/features/recommendations";
 import { CombosGrid } from "~/features/recommendations";
 import { TitleContainer } from "~/features/recommendations";
 
+
+const selectToonOrgs = createSelector(
+  [(state) => state.recommendations.toons.toonList],
+  (toonList) => toonList.map((toon) => toon.active ? toon.organic : "")
+);
 
 export default function CombosComponent() {
 
@@ -15,7 +21,7 @@ export default function CombosComponent() {
   const cogTrapped = useSelector((state) => state.recommendations.cog.trapped);
   const cog = cogLevel && new Cog(cogLevel, cogV2, cogLured, cogTrapped);
   const numToons = useSelector((state) => state.recommendations.toons.toonList.filter(toon => toon.active).length);
-  const toonOrgs = useSelector((state) => state.recommendations.toons.toonList.map((toon) => toon.active ? toon.organic : ""));
+  const toonOrgs = useSelector(selectToonOrgs);
   const comboType = useSelector((state) => state.recommendations.combos.type);
   const comboSort = useSelector((state) => state.recommendations.combos.sort);
   const gagFilters = useSelector((state) => state.recommendations.combos.filters);
